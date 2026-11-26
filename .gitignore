@@ -1,0 +1,6 @@
+.env
+.venv/
+bookings.db
+transcripts/
+__pycache__/
+.claude/

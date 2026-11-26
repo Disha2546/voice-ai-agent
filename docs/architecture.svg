@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Voice AI Agent: how it works</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .t { fill: #0f172a; }
+    .muted { fill: #64748b; }
+    .h { font-weight: 700; font-size: 15px; }
+    .s { font-size: 13px; }
+    .xs { font-size: 12px; }
+    .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
+    .edge { stroke: #64748b; stroke-width: 1.6; fill: none; }
+  </style>
+
+  <rect width="1000" height="640" rx="16" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="48" class="t" font-size="24" font-weight="700">Voice AI Agent: how it works</text>
+  <text x="40" y="74" class="muted s">You speak. The agent listens, thinks, acts, and speaks back.</text>
+
+  <!-- You -->
+  <rect x="435" y="92" width="130" height="52" rx="26" fill="#ffffff" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="500" y="115" text-anchor="middle" class="t h">You</text>
+  <text x="500" y="133" text-anchor="middle" class="muted xs">mic + speaker</text>
+
+  <line class="edge" x1="470" y1="144" x2="330" y2="190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line class="edge" x1="530" y1="144" x2="670" y2="190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <!-- Two ways to talk -->
+  <rect x="150" y="190" width="300" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="300" y="214" text-anchor="middle" class="t h">Terminal (console mode)</text>
+  <text x="300" y="234" text-anchor="middle" class="muted xs">quick test on your laptop</text>
+
+  <text x="500" y="223" text-anchor="middle" class="muted s">or</text>
+
+  <rect x="550" y="190" width="300" height="56" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="700" y="214" text-anchor="middle" class="h" fill="#075985">Browser → LiveKit Cloud</text>
+  <text x="700" y="234" text-anchor="middle" class="xs" fill="#075985">WebRTC room: a real web call</text>
+
+  <line class="edge" x1="300" y1="246" x2="300" y2="290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line class="edge" x1="700" y1="246" x2="700" y2="290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="312" y="272" class="muted xs">voice in and out</text>
+  <text x="712" y="272" class="muted xs">voice in and out</text>
+
+  <!-- agent.py -->
+  <rect x="40" y="290" width="920" height="175" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="60" y="318" class="s"><tspan class="t" font-weight="700" font-size="16">agent.py</tspan><tspan class="muted" dx="10">your code, runs on your laptop · built with LiveKit Agents</tspan></text>
+
+  <rect x="60" y="336" width="160" height="100" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="74" y="364" class="h" fill="#5b21b6">1. Hear</text>
+  <text x="74" y="388" class="t s">Is someone speaking?</text>
+  <text x="74" y="418" class="xs" font-weight="600" fill="#5b21b6">Silero VAD · local</text>
+
+  <rect x="240" y="336" width="160" height="100" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="254" y="364" class="h" fill="#075985">2. Listen</text>
+  <text x="254" y="388" class="t s">Voice → text</text>
+  <text x="254" y="418" class="xs" font-weight="600" fill="#075985">Deepgram STT · online</text>
+
+  <rect x="420" y="336" width="160" height="100" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="434" y="364" class="h" fill="#5b21b6">3. Wait</text>
+  <text x="434" y="388" class="t s">Did they finish?</text>
+  <text x="434" y="418" class="xs" font-weight="600" fill="#5b21b6">Turn detector · local</text>
+
+  <rect x="600" y="336" width="160" height="100" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="614" y="364" class="h" fill="#075985">4. Think</text>
+  <text x="614" y="388" class="t s">Reply or use a tool?</text>
+  <text x="614" y="418" class="xs" font-weight="600" fill="#075985">Groq LLM · online</text>
+
+  <rect x="780" y="336" width="160" height="100" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="794" y="364" class="h" fill="#075985">5. Speak</text>
+  <text x="794" y="388" class="t s">Text → voice</text>
+  <text x="794" y="418" class="xs" font-weight="600" fill="#075985">Deepgram TTS · online</text>
+
+  <line class="edge" x1="220" y1="386" x2="240" y2="386" marker-end="url(#arrow)"/>
+  <line class="edge" x1="400" y1="386" x2="420" y2="386" marker-end="url(#arrow)"/>
+  <line class="edge" x1="580" y1="386" x2="600" y2="386" marker-end="url(#arrow)"/>
+  <line class="edge" x1="760" y1="386" x2="780" y2="386" marker-end="url(#arrow)"/>
+
+  <!-- Tools and data -->
+  <line class="edge" x1="665" y1="436" x2="665" y2="495" marker-end="url(#arrow)"/>
+  <line class="edge" x1="695" y1="495" x2="695" y2="436" marker-end="url(#arrow)"/>
+  <text x="657" y="482" text-anchor="end" class="muted xs">asks</text>
+  <text x="703" y="482" class="muted xs">result</text>
+
+  <rect x="560" y="495" width="240" height="78" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="576" y="519" class="h" fill="#166534">Tools (Python functions)</text>
+  <text x="576" y="541" class="t mono">check_availability</text>
+  <text x="576" y="560" class="t mono">book_appointment</text>
+
+  <line class="edge" x1="800" y1="534" x2="830" y2="534" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <rect x="830" y="495" width="130" height="78" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="846" y="519" class="h" fill="#166534">bookings.db</text>
+  <text x="846" y="541" class="t xs">SQLite database</text>
+  <text x="846" y="560" class="t xs">no double booking</text>
+
+  <line class="edge" x1="180" y1="465" x2="180" y2="495" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="495" width="240" height="78" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="76" y="519" class="h" fill="#166534">transcripts/</text>
+  <text x="76" y="541" class="t xs">every call saved as a JSON file</text>
+  <text x="76" y="560" class="t xs">when the call ends</text>
+
+  <!-- Legend -->
+  <rect x="40" y="600" width="16" height="16" rx="4" fill="#ede9fe" stroke="#8b5cf6"/>
+  <text x="64" y="613" class="t s">Runs on your laptop (free)</text>
+  <rect x="300" y="600" width="16" height="16" rx="4" fill="#e0f2fe" stroke="#38bdf8"/>
+  <text x="324" y="613" class="t s">Online service (free tier)</text>
+  <rect x="560" y="600" width="16" height="16" rx="4" fill="#dcfce7" stroke="#22c55e"/>
+  <text x="584" y="613" class="t s">Your tools and data</text>
+</svg>
