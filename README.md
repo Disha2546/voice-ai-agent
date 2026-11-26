@@ -156,6 +156,6 @@ rm bookings.db
 - [x] Step 5: Tools (check slots, book)
 - [x] Step 6: Talk in the browser
 - [x] Step 7: Save call transcripts
-- [ ] Step 8: Publish on GitHub
+- [x] Step 8: Publish on GitHub
 
 📖 More details: [docs/project-intro.md](docs/project-intro.md)
